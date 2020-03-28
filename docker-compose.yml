@@ -3,7 +3,7 @@ version: "2"
 
 x-environment: &commonEnvironment
     PORT: 7343
-    tor_interval: 10
+    tor_interval: 50
 
 services:
   tor-socks-proxy:
@@ -16,7 +16,7 @@ services:
       context: .
       args:
         - PORT=7343   
-        - tor_interval=10
+        - tor_interval=50
     #ports:
     #  - "127.0.0.1:7343:9150"
 #      -  PORT=7343
