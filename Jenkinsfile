@@ -2,10 +2,11 @@ pipeline {
    agent any
 
    stages {
-      stage('Build docker-compose')
+      stage('Build docker-compose') {
          steps {
              sh "docker-compose build"
          }
+      }
       stage('Run tor&tor consumer images') {
          steps {
             // Get some code from a GitHub repository
