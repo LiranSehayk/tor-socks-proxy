@@ -26,8 +26,8 @@ services:
   ubuntu:
     container_name: tor-consumer
     image: liransehayk/tor_consumer
-    #entrypoint: ["/work/entryscript.sh"] 
-    entrypoint: ["tail", "-f", "/dev/null"]
+    entrypoint: ["/work/entryscript.sh"] 
+    #entrypoint: ["tail", "-f", "/dev/null"]
     environment: *commonEnvironment
 #    command: bash -c "tail -f /dev/null"
 #    build: .
