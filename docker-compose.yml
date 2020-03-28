@@ -13,7 +13,7 @@ services:
       driver: none
     environment: *commonEnvironment
     build: 
-      context: /home/jenkins/tor-socks-proxy/.
+      context: .
       args:
         - PORT=7343   
         - tor_interval=10
