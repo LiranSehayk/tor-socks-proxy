@@ -17,7 +17,7 @@ pipeline {
    }
    post {
        always {
-           echo 'Pipeline finished.'
+           echo 'Pipeline finished'
            sh "docker-compose down"
        }
        success {
