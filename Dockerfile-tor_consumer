@@ -20,6 +20,6 @@ COPY ["tor_con__entryscript.sh", "/work/entryscript.sh"]
 
 RUN chmod +x /work/entryscript.sh && \
     apt-get update && \
-    apt-get install -y curl vim net-tools && \
+    apt-get install -y curl && \
     rm -rf /var/lib/apt/lists/* 
 
