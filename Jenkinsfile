@@ -5,7 +5,9 @@ pipeline {
       stage('Build docker-compose') {
          steps {
              // build images from docker-compose file
-             sh "docker-compose build"
+            ansiColor('xterm') {
+                sh "docker-compose build"
+            }
          }
       }
       stage('Run tor&tor consumer images') {
@@ -13,7 +15,10 @@ pipeline {
             // start docker-compose
             // stop all containers once one of them is exiting
             // get the exit code from ubuntu service
-            sh "docker-compose up --abort-on-container-exit --exit-code-from ubuntu"
+            ansiColor('xterm') {
+                sh "docker-compose up --abort-on-container-exit --exit-code-from ubuntu"
+            }
+            
          }
       }
    }
@@ -32,3 +37,4 @@ pipeline {
        }
    }
 }
+

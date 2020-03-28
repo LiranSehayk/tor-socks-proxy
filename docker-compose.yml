@@ -2,8 +2,8 @@
 version: "3.4"
 
 x-common-variables: &commonEnvironment
-    PORT: 7343
-    tor_interval: 10
+    PORT: ${PORT}
+    tor_interval: ${tor_interval}
 
 services:
   tor-socks-proxy:
@@ -15,8 +15,8 @@ services:
     build: 
       context: .
       args:
-        - PORT=${PORT:-9150}   
-        - tor_interval=${tor_interval:-30}
+        - PORT=${PORT}   
+        - tor_interval=${tor_interval}
     restart: unless-stopped
     networks:
       - net
