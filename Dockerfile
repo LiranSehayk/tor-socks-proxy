@@ -12,9 +12,11 @@ RUN echo '@edge http://dl-cdn.alpinelinux.org/alpine/edge/community' >> /etc/apk
     tor --version
 COPY torrc /etc/tor/
 
-ARG PORT
-ENV PORT $PORT
-RUN sed -i "s/\$PORT/$PORT/g" /etc/tor/torrc
+ARG PORT=9150 
+ARG tor_interval=30
+RUN sed -i "s/\$PORT/$PORT/g" /etc/tor/torrc && \
+    echo "MaxCircuitDirtiness $tor_interval" >> /etc/tor/torrc
+
 
 HEALTHCHECK --timeout=10s --start-period=60s \
     CMD curl --fail --socks5-hostname localhost:$PORT -I -L 'https://www.facebookcorewwwi.onion/' || exit 1
