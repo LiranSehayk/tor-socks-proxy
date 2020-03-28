@@ -15,7 +15,7 @@ COPY torrc /etc/tor/
 ARG PORT=9150 
 ARG tor_interval=30
 RUN sed -i "s/\$PORT/$PORT/g" /etc/tor/torrc && \
-    echo "MaxCircuitDirtiness 50 >> /etc/tor/torrc
+    echo "MaxCircuitDirtiness 50 " >> /etc/tor/torrc
 
 
 HEALTHCHECK --timeout=10s --start-period=60s \
