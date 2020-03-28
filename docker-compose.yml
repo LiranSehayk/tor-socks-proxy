@@ -22,7 +22,9 @@ services:
       - net
   ubuntu:
     container_name: tor-consumer
-    image: liransehayk/tor_consumer
+    build:
+      context: .
+      dockerfile: Dockerfile-tor_consumer
     entrypoint: ["/work/entryscript.sh"] 
     environment: *commonEnvironment
     depends_on:

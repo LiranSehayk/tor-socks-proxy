@@ -22,6 +22,7 @@ pipeline {
            echo 'Pipeline finished'
            // stop docker-compose on any build status
            sh "docker-compose down"
+           cleanWs()
        }
        success {
            echo 'Build ended sucessfully'

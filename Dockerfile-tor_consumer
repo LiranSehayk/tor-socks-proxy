@@ -1,0 +1,25 @@
+#################################################################################
+############################## Main Stage #######################################
+#################################################################################
+
+FROM ubuntu
+WORKDIR /root/
+
+USER root
+
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VCS_URL
+
+LABEL org.label-schema.build-date=${BUILD_DATE} \
+      org.label-schema.vcs-url=${VCS_URL} \
+      org.label-schema.vcs-ref=$VCS_REF
+
+
+COPY ["tor_con__entryscript.sh", "/work/entryscript.sh"]
+
+RUN chmod +x /work/entryscript.sh && \
+    apt-get update && \
+    apt-get install -y curl vim net-tools && \
+    rm -rf /var/lib/apt/lists/* 
+
