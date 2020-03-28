@@ -15,7 +15,7 @@ pipeline {
       }
       stage('Start the Tor&Sample containers') {
           steps {
-              sh "echo aaa"
+              sh "echo aaaaaa"
           }
           
       }
