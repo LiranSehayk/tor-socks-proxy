@@ -1,10 +1,48 @@
 ---
 version: "2"
 
+x-environment: &commonEnvironment
+    PORT: 7343
+    tor_interval: 10
+
 services:
   tor-socks-proxy:
     container_name: tor-socks-proxy
-    image: peterdavehello/tor-socks-proxy:latest
-    ports:
-      - "127.0.0.1:9150:9150"
+    #image: peterdavehello/tor-socks-proxy:latest
+    logging: 
+      driver: none
+    environment: *commonEnvironment
+    build: 
+      context: /home/jenkins/tor-socks-proxy/.
+      args:
+        - PORT=7343   
+        - tor_interval=10
+    #ports:
+    #  - "127.0.0.1:7343:9150"
+#      -  PORT=7343
     restart: unless-stopped
+    networks:
+      - net
+  ubuntu:
+    container_name: tor-consumer
+    image: liransehayk/tor_consumer
+    #entrypoint: ["/work/entryscript.sh"] 
+    entrypoint: ["tail", "-f", "/dev/null"]
+    environment: *commonEnvironment
+#    command: bash -c "tail -f /dev/null"
+#    build: .
+    depends_on:
+      - tor-socks-proxy
+    networks:
+      - net
+#  jenkins:
+#    container_name: jenkinsss
+#    image: jenkins/jenkins
+#    ports:
+#      - "8088:8080"
+#    volumes:
+#      - "$PWD/jenkins_home:/var/jenkins_home"
+#    networks:
+#      - net
+networks:
+  net:

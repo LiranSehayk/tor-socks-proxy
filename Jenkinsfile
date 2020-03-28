@@ -10,7 +10,8 @@ pipeline {
          steps {
             // Get some code from a GitHub repository
             // manipulate tor project to listen on port 7343
-            sh "docker-compose up --abort-on-container-exit --exit-code-from ubuntu"
+            echo "aaaaaaa"
+            //sh "docker-compose up --abort-on-container-exit --exit-code-from ubuntu"
          }
       }
    }
