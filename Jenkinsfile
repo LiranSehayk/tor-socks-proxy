@@ -16,7 +16,7 @@ pipeline {
       stage('Run tor&tor consumer images') {
          steps {
             // start docker-compose
-            // stop all containers once one of them is exiting
+            // stop all containers once one of them is exiting 
             // get the exit code from ubuntu service
             ansiColor('xterm') {
                 sh "docker-compose up --abort-on-container-exit --exit-code-from ubuntu"
