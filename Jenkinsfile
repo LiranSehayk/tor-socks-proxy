@@ -1,6 +1,9 @@
 pipeline {
    agent any
 
+   options {
+       disableConcurrentBuilds()
+   }
    stages {
       stage('Build docker-compose') {
          steps {
